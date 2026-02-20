@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HomeIQ | AI-Powered Property Condition Monitoring</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: -1px;
+        }
+
+        .logo-sub {
+            font-size: 14px;
+            opacity: 0.9;
+            font-weight: normal;
+            margin-top: 2px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 24px;
+            margin-bottom: 15px;
+            opacity: 0.95;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease-out 0.3s backwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #2c3e50;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Status Indicator */
+        .status-visual-section {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .status-visual {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            animation: fadeInUp 0.8s ease-out 0.5s backwards;
+        }
+
+        .status-item {
+            text-align: center;
+        }
+
+        .status-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .red-status { background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); }
+        .yellow-status { background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%); }
+        .green-status { background: linear-gradient(135deg, #27ae60 0%, #229954 100%); }
+
+        /* Value Props Section */
+        .value-props {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .props-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .prop-card {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .prop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .prop-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .prop-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .prop-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        @media (min-width: 1024px) {
+            .steps-container {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .step h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        /* Top 10 Systems */
+        .systems-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #ecf0f1 0%, #bdc3c7 100%);
+        }
+
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .system-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .system-card:hover {
+            transform: scale(1.05);
+        }
+
+        .system-icon {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .system-card h4 {
+            font-size: 18px;
+            color: #2c3e50;
+        }
+
+        /* Use Cases */
+        .use-cases {
+            padding: 80px 0;
+        }
+
+        .use-case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .use-case {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .use-case h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .use-case ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .use-case li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .use-case li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: #2c3e50;
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid #34495e;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            background: #34495e;
+            color: white;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #95a5a6;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        .success-message {
+            display: none;
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a252f;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero .subtitle {
+                font-size: 20px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .status-visual {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .props-grid,
+            .use-case-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div>
+                <div class="logo">HomeIQ</div>
+                <div class="logo-sub">AI-Powered Property Intelligence</div>
+            </div>
+            <div class="nav-links">
+                <a href="#how-it-works">How It Works</a>
+                <a href="#use-cases">Use Cases</a>
+                <a href="#systems">Systems Tracked</a>
+                <a href="#contact">Get Started</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Transform Property Management with AI</h1>
+            <p class="subtitle">AI-Powered Property Condition Monitoring & Certification Platform</p>
+            <p>Document, track, and interpret property condition over time using smartphone video scans and drone imagery. Reduce disputes, eliminate surprises, and create mutual accountability between owners and tenants.</p>
+            <a href="#contact" class="cta-button">Request Early Access</a>
+        </div>
+    </section>
+
+    <!-- Value Props Section -->
+    <section class="value-props">
+        <div class="container">
+            <h2 class="section-title">Why HomeIQ?</h2>
+            <p class="section-subtitle">A neutral, time-stamped, AI-interpreted visual record that benefits everyone</p>
+            
+            <div class="props-grid">
+                <div class="prop-card">
+                    <div class="prop-icon">🎯</div>
+                    <h3>Quantify Deterioration</h3>
+                    <p>AI-powered analysis distinguishes normal wear from excessive damage, providing objective condition scores over time.</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-icon">🤝</div>
+                    <h3>Mutual Accountability</h3>
+                    <p>Hold both tenants and property owners accountable. Document maintenance requests and track whether issues are addressed.</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-icon">💰</div>
+                    <h3>Reduce Disputes</h3>
+                    <p>Dramatically reduce security deposit disputes with clear, time-stamped visual evidence of property condition changes.</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-icon">📊</div>
+                    <h3>Portfolio Oversight</h3>
+                    <p>Centralized dashboard for large portfolios. Reduce field staff dependency and enable remote, scalable property management.</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-icon">🔧</div>
+                    <h3>Repair Intelligence</h3>
+                    <p>AI-generated scopes of work and repair estimates for investors. Know exactly what needs fixing before you buy.</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-icon">✅</div>
+                    <h3>Property Certification</h3>
+                    <p>Earn a "Property Seal of Approval" that signals transparency, accountability, and proactive maintenance to tenants and buyers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Simple, guided process for comprehensive property documentation</p>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Scan with Smartphone</h3>
+                    <p>Follow guided prompts to capture video walkthrough of property condition. Optional drone imagery for roof and exterior.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>AI Analysis</h3>
+                    <p>Computer vision analyzes footage and assigns condition scores to 10 critical property systems. Color-coded (red/yellow/green) for instant clarity.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Track Over Time</h3>
+                    <p>Each scan creates a time-stamped record. Track deterioration trends and receive early warnings for maintenance needs.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Take Action</h3>
+                    <p>Request bids from vetted contractors, export evidence packages for disputes, or certify property for market differentiation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visual Condition Scoring -->
+    <section class="status-visual-section">
+        <div class="container">
+            <h2 class="section-title">Visual Condition Scoring</h2>
+            <p class="section-subtitle">Color-coded property health indicators for instant clarity</p>
+            
+            <div class="status-visual">
+                <div class="status-item">
+                    <div class="status-circle red-status">!</div>
+                    <div>Needs Attention</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-circle yellow-status">⚠</div>
+                    <div>Monitor</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-circle green-status">✓</div>
+                    <div>Good Condition</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top 10 Systems -->
+    <section id="systems" class="systems-section">
+        <div class="container">
+            <h2 class="section-title">Top 10 Critical Systems Tracked</h2>
+            <p class="section-subtitle">Visual condition scores for the most important and costly property components</p>
+            
+            <div class="systems-grid">
+                <div class="system-card">
+                    <div class="system-icon">🏠</div>
+                    <h4>Roof</h4>
+                </div>
+                <div class="system-card">
+                    <div class="system-icon">❄️</div>
+                    <h4>HVAC System</h4>
+                </div>
+                <div class="system-card">
+                    <div class="system-icon">💧</div>
+                    <h4>Water Heater</h4>
+                </div>
+                <div class="system-card">
+                    <div class="system-icon">🚰</div>
+                    <h4>Plumbing Fixtures</h4>
+                </div>
+                <div class="system-card">
+                    <div class="system-icon">⚡</div>
+                    <h4>Electrical Panels</h4>
+                </div>
+                <div class="system-card">
+                    <div class="system-icon">🪵</div>
+                    <h4>Flooring</h4>
+                </div>
+                <div class="system-card">
+                    <div class="system-icon">🎨</div>
+                    <h4>Walls & Paint</h4>
+                </div>
+                <div class="system-card">
+                    <div class="system-icon">🗄️</div>
+                    <h4>Cabinets & Countertops</h4>
+                </div>
+                <div class="system-card">
+                    <div class="system-icon">🪟</div>
+                    <h4>Windows & Doors</h4>
+                </div>
+                <div class="system-card">
+                    <div class="system-icon">🍳</div>
+                    <h4>Appliances</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section id="use-cases" class="use-cases">
+        <div class="container">
+            <h2 class="section-title">Who Benefits?</h2>
+            
+            <div class="use-case-grid">
+                <div class="use-case">
+                    <h3>🏢 Property Managers</h3>
+                    <ul>
+                        <li>Remote portfolio oversight across thousands of units</li>
+                        <li>Reduce field staff and site visit costs</li>
+                        <li>Condition heat maps by property and region</li>
+                        <li>Predictive capital planning</li>
+                    </ul>
+                </div>
+                <div class="use-case">
+                    <h3>🏘️ Landlords</h3>
+                    <ul>
+                        <li>Clear security deposit documentation</li>
+                        <li>Reduced tenant disputes</li>
+                        <li>Early maintenance warnings</li>
+                        <li>Property certification for better tenants</li>
+                    </ul>
+                </div>
+                <div class="use-case">
+                    <h3>👥 Tenants</h3>
+                    <ul>
+                        <li>Visual proof of reported maintenance issues</li>
+                        <li>Protection from unfair deposit deductions</li>
+                        <li>Move-in baseline documentation</li>
+                        <li>Transparent accountability system</li>
+                    </ul>
+                </div>
+                <div class="use-case">
+                    <h3>💼 Investors (Buy & Hold)</h3>
+                    <ul>
+                        <li>Pre-purchase condition assessment</li>
+                        <li>AI-generated repair scopes and budgets</li>
+                        <li>Deferred maintenance quantification</li>
+                        <li>Stronger negotiation position</li>
+                    </ul>
+                </div>
+                <div class="use-case">
+                    <h3>🔨 Investors (Fix & Flip)</h3>
+                    <ul>
+                        <li>Instant repair estimates during property tours</li>
+                        <li>Line-item cost breakdowns</li>
+                        <li>Priority sequencing for renovations</li>
+                        <li>Materials pricing from retail partners</li>
+                    </ul>
+                </div>
+                <div class="use-case">
+                    <h3>🏡 Homeowners</h3>
+                    <ul>
+                        <li>Deferred maintenance backlog analysis</li>
+                        <li>Market-ready update recommendations</li>
+                        <li>Cosmetic refresh guidance (counters, flooring, paint)</li>
+                        <li>Maximize resale value</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Get Early Access</h2>
+            <div class="contact-container">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="userType">I am a... *</label>
+                        <select id="userType" name="userType" required>
+                            <option value="">Select one</option>
+                            <option value="landlord">Individual Landlord</option>
+                            <option value="property-manager">Property Management Company</option>
+                            <option value="investor-buy-hold">Investor (Buy & Hold)</option>
+                            <option value="investor-flip">Investor (Fix & Flip)</option>
+                            <option value="tenant">Tenant</option>
+                            <option value="homeowner">Homeowner</option>
+                            <option value="contractor">Contractor</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Tell us about your needs (optional)</label>
+                        <textarea id="message" name="message" placeholder="What problems are you trying to solve?"></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Request Early Access</button>
+                </form>
+                <div id="successMessage" class="success-message">
+                    Thank you! We'll be in touch soon with early access details.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 HomeIQ | <a href="https://homeiqhq.com" style="color: white; text-decoration: underline;">homeiqhq.com</a></p>
+            <p style="margin-top: 10px; font-size: 14px; opacity: 0.8;">Proprietary and confidential. Patent pending.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would normally send the form data to your server
+            // For now, we'll just show a success message
+            
+            const successMessage = document.getElementById('successMessage');
+            successMessage.style.display = 'block';
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
